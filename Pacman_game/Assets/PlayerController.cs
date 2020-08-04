@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour {
                 transform.up = Vector2.right;
             }
         }
+        //if pacman has been moved, the vector will not be 0.0, 0.0
+        Vector2 dir = dest - (Vector2)transform.position;
+        animator.SetBool("moving", (dir.x != 0 || dir.y != 0));
         
     }
 
