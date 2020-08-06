@@ -36,14 +36,22 @@ public class GhostController : MonoBehaviour {
         //If the current direction is not valid
         if (!checkDirValid(direction))
         {
-            print("111");
             if (canChangeDir())
             {
-                print("change dir");
                 changeDir();
+            }
+            //current dir is not valid and collided with other game objects
+            else if(rb.velocity.magnitude < speed)
+            {
+                changeDirRandomly();
             }
         }
         else if (canChangeDir() && Time.time > dirTime)//if the current dir is valid, maybe change dir somewhere on the way
+        {
+            changeDirRandomly();
+        }
+        //collide with other game objects when the current dir is valid
+        else if (rb.velocity.magnitude < speed)
         {
             changeDirRandomly();
         }
@@ -82,7 +90,6 @@ public class GhostController : MonoBehaviour {
     /// <returns>The validation of the two directions</returns>
     private bool canChangeDir()
     {
-        dirTime = Time.time + 1;//Ghost cannot change dir for a second
         Vector2 right = DirectionUtil.GetPerpenRightDir(direction);
         bool canTurnRight = checkDirValid(right);
         Vector2 left = DirectionUtil.GetPerpenLeftDir(direction);
@@ -129,7 +136,8 @@ public class GhostController : MonoBehaviour {
     /// </summary>
     private void changeDirRandomly()
     {
-        if(Random.Range(0, 2) > 0)
+        dirTime = Time.time + 1;//Ghost cannot change dir for a second
+        if (Random.Range(0, 2) > 0)
         {
             changeDir();
         }
