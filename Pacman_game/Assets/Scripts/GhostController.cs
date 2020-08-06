@@ -30,8 +30,16 @@ public class GhostController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //changeDir();
-
+        //If the current direction is not valid
+        if (!checkDirValid(direction))
+        {
+            print("111");
+            if (canChangeDir())
+            {
+                print("change dir");
+                changeDir();
+            }
+        }
         movement();
 	}
 
@@ -45,7 +53,7 @@ public class GhostController : MonoBehaviour {
         //The distance for the cast
         float distance = 1;
         //Cast a collider shape into the scene
-        cirColl.Cast(direction, hits, distance, true);
+        cirColl.Cast(dir, hits, distance, true);
         //If the array has 'wall' objects, the dir is not valid and return false
         foreach(RaycastHit2D hit in hits)
         {
@@ -104,6 +112,9 @@ public class GhostController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// The function that implements ghost's movement
+    /// </summary>
     private void movement()
     {
         rb.velocity = direction * speed;
