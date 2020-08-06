@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour {
     //Pacman's speed
     private float speed = 0.1f;
 
+    //Player's score
+    private int score;
+
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
@@ -71,5 +74,11 @@ public class PlayerController : MonoBehaviour {
     {
         transform.position = pos;
         dest = pos;
+    }
+
+    public void addScore(int points)
+    {
+        score += points;
+        print(score);
     }
 }

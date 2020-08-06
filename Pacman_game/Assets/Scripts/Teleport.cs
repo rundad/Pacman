@@ -17,12 +17,15 @@ public class Teleport : MonoBehaviour {
 		
 	}
 
+    //Teleport the game objects that collide with this object
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //If the collide game object is pacman, use the function in pacman for teleporting
         if (collision.gameObject.name == "pacman")
         {
             collision.gameObject.GetComponent<PlayerController>().move_position(teleport_to);
         }
+        //If the game object are other game objects, just set their position to the teleport_to position
         else
         {
             //collision.gameObject.transform.position = teleport_to;

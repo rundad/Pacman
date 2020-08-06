@@ -23,6 +23,7 @@ public class Pill : MonoBehaviour {
         
         if (collision.gameObject.name == "pacman")
         {
+            collision.gameObject.GetComponent<PlayerController>().addScore(points);
             this.gameObject.SetActive(false);
         }
     }
