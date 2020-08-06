@@ -65,4 +65,11 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hitObj = Physics2D.Linecast(pos + dir, pos);//return the object that are in the way that pacman is going
         return (hitObj.collider == GetComponent<Collider2D>() || hitObj.collider.gameObject.tag == "pill");
     }
+
+    //Moves pacman's position instantly and update the destination value
+    public void move_position(Vector2 pos)
+    {
+        transform.position = pos;
+        dest = pos;
+    }
 }
