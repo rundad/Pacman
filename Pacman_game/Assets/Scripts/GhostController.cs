@@ -40,6 +40,8 @@ public class GhostController : MonoBehaviour {
                 changeDir();
             }
         }
+
+        changeEyesDir();
         movement();
 	}
 
@@ -125,6 +127,22 @@ public class GhostController : MonoBehaviour {
         else
         {
             transform.position = new Vector2(transform.position.x, Mathf.Round(transform.position.y));
+        }
+    }
+
+    /// <summary>
+    /// This function changes the eyes direction of the ghost
+    /// Gets the child transform objects of the current ghost object
+    /// If the child transform is not the current objects transform, change the direction
+    /// </summary>
+    private void changeEyesDir()
+    {
+        foreach(Transform t in GetComponentInChildren<Transform>())
+        {
+            if(t != transform)
+            {
+                t.up = direction;
+            }
         }
     }
 }
