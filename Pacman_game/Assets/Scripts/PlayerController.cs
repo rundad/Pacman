@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //Moves pacman's position instantly and update the destination value
-    public void move_position(Vector2 pos)
+    public void movePosition(Vector2 pos)
     {
         transform.position = pos;
         dest = pos;

@@ -23,7 +23,7 @@ public class Teleport : MonoBehaviour {
         //If the collide game object is pacman, use the function in pacman for teleporting
         if (collision.gameObject.name == "pacman")
         {
-            collision.gameObject.GetComponent<PlayerController>().move_position(teleport_to);
+            collision.gameObject.GetComponent<PlayerController>().movePosition(teleport_to);
         }
         //If the game object are other game objects, just set their position to the teleport_to position
         else
