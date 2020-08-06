@@ -8,7 +8,10 @@ public class GhostController : MonoBehaviour {
     /// The movement speed of the ghost
     /// </summary>
     private float speed = 2.0f;
-
+    /// <summary>
+    /// The float value for limiting the frequency of direction changing
+    /// </summary>
+    private float dirTime;
     /// <summary>
     /// The initial direction of the ghost
     /// </summary>
@@ -39,6 +42,10 @@ public class GhostController : MonoBehaviour {
                 print("change dir");
                 changeDir();
             }
+        }
+        else if (canChangeDir() && Time.time > dirTime)//if the current dir is valid, maybe change dir somewhere on the way
+        {
+            changeDirRandomly();
         }
 
         changeEyesDir();
@@ -75,6 +82,7 @@ public class GhostController : MonoBehaviour {
     /// <returns>The validation of the two directions</returns>
     private bool canChangeDir()
     {
+        dirTime = Time.time + 1;//Ghost cannot change dir for a second
         Vector2 right = DirectionUtil.GetPerpenRightDir(direction);
         bool canTurnRight = checkDirValid(right);
         Vector2 left = DirectionUtil.GetPerpenLeftDir(direction);
@@ -91,6 +99,7 @@ public class GhostController : MonoBehaviour {
     /// </summary>
     private void changeDir()
     {
+        dirTime = Time.time + 1;//Ghost cannot change dir for a second
         Vector2 right = DirectionUtil.GetPerpenRightDir(direction);
         bool canTurnRight = checkDirValid(right);
         Vector2 left = DirectionUtil.GetPerpenLeftDir(direction);
@@ -111,6 +120,18 @@ public class GhostController : MonoBehaviour {
         else
         {
             direction = -direction;
+        }
+    }
+
+    /// <summary>
+    /// This function randomly changes the ghost direction
+    /// Depends if the randon number is greater than zero
+    /// </summary>
+    private void changeDirRandomly()
+    {
+        if(Random.Range(0, 2) > 0)
+        {
+            changeDir();
         }
     }
 
