@@ -46,6 +46,21 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public GameObject pacman;
 
+    /// <summary>
+    /// The pacman died animation clip
+    /// </summary>
+    public AnimationClip pacman_died_anim;
+
+    /// <summary>
+    /// The variable that used to delay the executing time of some logic
+    /// </summary>
+    private float delayTime;
+
+    /// <summary>
+    /// The array that stores the ghosts in the mze
+    /// </summary>
+    public List<GameObject> ghosts;
+
 	// Use this for initialization
 	void Start () {
 		if(instance == null)
@@ -115,14 +130,34 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(0);//loads the first scene in the build settings
     }
 
+    /// <summary>
+    /// This function defines the actions for the PACKMAN_KILLED state of FSMState
+    /// When pacman collided with ghosts, game state will changed to PACMAN_KILLED state and sets pacman inactive
+    /// </summary>
     private void UpdatePacmanKilledState()
     {
-        pacman.SetActive(false);
+        if(Time.time > delayTime)
+        {
+            pacman.SetActive(false);
+
+        }
     }
 
+    /// <summary>
+    /// This function is for the communication between the game manager and the ghosts
+    /// Ghosts tells the game manager that pacman has died
+    /// Make transition to pacman's animation, change to die animation
+    /// Change game state to PACMAN_KILLED state
+    /// Setting delay time for executing afterwards actions after finished playing the animation
+    /// </summary>
     public static void pacmanDied()
     {
         instance.pacman.GetComponent<PlayerController>().setState(true);
         instance.gameState = FSMState.PACMAN_KILLED;
+        instance.delayTime = Time.time + instance.pacman_died_anim.length;
+        foreach(GameObject ghost in instance.ghosts)
+        {
+            ghost.GetComponent<GhostController>().freeze(true);
+        }
     }
 }

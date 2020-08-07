@@ -25,6 +25,11 @@ public class GhostController : MonoBehaviour {
     /// </summary>
     private CircleCollider2D cirColl;
 
+    /// <summary>
+    /// The variable that indicates the ghost is fronzen or not
+    /// </summary>
+    private bool fronzen = false;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -33,31 +38,34 @@ public class GhostController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //If the current direction is not valid
-        if (!checkDirValid(direction))
+        if (!fronzen)
         {
-            if (canChangeDir())
+            //If the current direction is not valid
+            if (!checkDirValid(direction))
             {
-                changeDir();
+                if (canChangeDir())
+                {
+                    changeDir();
+                }
+                //current dir is not valid and collided with other game objects
+                else if (rb.velocity.magnitude < speed)
+                {
+                    changeDirRandomly();
+                }
             }
-            //current dir is not valid and collided with other game objects
-            else if(rb.velocity.magnitude < speed)
+            else if (canChangeDir() && Time.time > dirTime)//if the current dir is valid, maybe change dir somewhere on the way
             {
                 changeDirRandomly();
             }
-        }
-        else if (canChangeDir() && Time.time > dirTime)//if the current dir is valid, maybe change dir somewhere on the way
-        {
-            changeDirRandomly();
-        }
-        //collide with other game objects when the current dir is valid
-        else if (rb.velocity.magnitude < speed)
-        {
-            changeDirRandomly();
-        }
+            //collide with other game objects when the current dir is valid
+            else if (rb.velocity.magnitude < speed)
+            {
+                changeDirRandomly();
+            }
 
-        changeEyesDir();
-        movement();
+            changeEyesDir();
+            movement();
+        }
 	}
 
     /// <summary>
@@ -175,11 +183,26 @@ public class GhostController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// This function is used to detects the game objects that collided with the ghost
+    /// If the collided object is pacman, sends the message to game manager
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             GameManager.pacmanDied();
         }
+    }
+
+    /// <summary>
+    /// This function defines the actions for freezing the ghosts
+    /// </summary>
+    /// <param name="state">Freeze state</param>
+    public void freeze(bool state)
+    {
+        fronzen = state;
+        rb.velocity = Vector2.zero;
     }
 }
