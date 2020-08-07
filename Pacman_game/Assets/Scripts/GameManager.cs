@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public enum FSMState
     {
-        PLAY, GAME_WON
+        PLAY, GAME_WON, PACMAN_KILLED
     }
 
     /// <summary>
@@ -35,9 +35,27 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public GameObject resetText;
 
+    /// <summary>
+    /// A static instance of GameManager
+    /// Initialised at the start of the game
+    /// </summary>
+    private static GameManager instance;
+
+    /// <summary>
+    /// The pacman game object in the maze
+    /// </summary>
+    public GameObject pacman;
+
 	// Use this for initialization
 	void Start () {
-		
+		if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 	
 	// Update is called once per frame
@@ -46,6 +64,7 @@ public class GameManager : MonoBehaviour {
         {
             case FSMState.PLAY: UpdatePlayState(); break;
             case FSMState.GAME_WON: UpdateGameWonState(); break;
+            case FSMState.PACMAN_KILLED: UpdatePacmanKilledState(); break;
         }
 	}
 
@@ -94,5 +113,16 @@ public class GameManager : MonoBehaviour {
     public void resetGame()
     {
         SceneManager.LoadScene(0);//loads the first scene in the build settings
+    }
+
+    private void UpdatePacmanKilledState()
+    {
+        pacman.SetActive(false);
+    }
+
+    public static void pacmanDied()
+    {
+        instance.pacman.GetComponent<PlayerController>().setState(true);
+        instance.gameState = FSMState.PACMAN_KILLED;
     }
 }

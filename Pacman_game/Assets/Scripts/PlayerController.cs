@@ -5,16 +5,30 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 
-    //Animator object that pacman holding
+    /// <summary>
+    /// Animator object that pacman holding
+    /// </summary>
     Animator animator;
 
-
+    /// <summary>
+    /// The initial position of pacman
+    /// </summary>
     private Vector2 dest = Vector2.zero;
-    //Pacman's speed
+
+    /// <summary>
+    /// Pacman's movement speed
+    /// </summary>
     private float speed = 0.2f;
 
-    //Player's score
+    /// <summary>
+    /// The total score that the player have earned during the game
+    /// </summary>
     private int score;
+
+    /// <summary>
+    /// The state that indicates that pacman is still alive or not
+    /// </summary>
+    private bool pacman_alive;
 
 	// Use this for initialization
 	void Start () {
@@ -61,7 +75,11 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    //Check pacman's next destination is valid or not
+    /// <summary>
+    /// Check pacman's next destination is valid or not
+    /// </summary>
+    /// <param name="dir">The next destination point that pacman is going</param>
+    /// <returns>Validation of the passed in parameter direction</returns>
     private bool dirValid(Vector2 dir)
     {
         Vector2 pos = transform.position;//object current position
@@ -69,16 +87,33 @@ public class PlayerController : MonoBehaviour {
         return (hitObj.collider == GetComponent<Collider2D>() || hitObj.collider.gameObject.tag == "pill");
     }
 
-    //Moves pacman's position instantly and update the destination value
+    /// <summary>
+    /// Moves pacman's position instantly and update the destination value
+    /// </summary>
+    /// <param name="pos">The postion that pacman is going to move to</param>
     public void movePosition(Vector2 pos)
     {
         transform.position = pos;
         dest = pos;
     }
 
+    /// <summary>
+    /// Adds the score from collecting the pill to the total score
+    /// </summary>
+    /// <param name="points">The score that earns from collecting a pill</param>
     public void addScore(int points)
     {
         score += points;
         print(score);
+    }
+
+    /// <summary>
+    /// The function that sets the state for the pacman animation for changing animation to pacman died animation
+    /// </summary>
+    /// <param name="aliveState">The boolean value that states pacman is alive or not</param>
+    public void setState(bool aliveState)
+    {
+        pacman_alive = aliveState;
+        animator.SetBool("died", pacman_alive);
     }
 }
