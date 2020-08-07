@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour {
     {
         winImage.SetActive(true);//enable game win UI image
         resetText.SetActive(true);//enable reset UI text
+        setGameState(false);
         if (Input.GetKeyDown(KeyCode.Return))
         {
             resetGame();
@@ -188,6 +189,20 @@ public class GameManager : MonoBehaviour {
             {
                 resetGame();
             }
+        }
+    }
+
+    /// <summary>
+    /// This function is used to freeze all moveable game objects in the maze.
+    /// Disable all moveable game objects movement by disable game objects controller
+    /// </summary>
+    /// <param name="state"></param>
+    private void setGameState(bool state)
+    {
+        pacman.GetComponent<PlayerController>().enabled = state;
+        foreach(GameObject ghost in ghosts)
+        {
+            ghost.GetComponent<GhostController>().enabled = state;
         }
     }
 }
