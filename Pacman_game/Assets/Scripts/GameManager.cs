@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -26,8 +28,12 @@ public class GameManager : MonoBehaviour {
     /// <summary>
     /// The variable that stores the game object of the game win UI image
     /// </summary>
-    public GameObject WinImage;
+    public GameObject winImage;
 
+    /// <summary>
+    /// The variable for storing the game object of the reset UI Text
+    /// </summary>
+    public GameObject resetText;
 
 	// Use this for initialization
 	void Start () {
@@ -68,10 +74,25 @@ public class GameManager : MonoBehaviour {
 
     /// <summary>
     /// This function defines the actions for the GAME_WON state of FSMState
-    /// When this function is called, enable the disabled UI image for displaying the game win message to the play
+    /// When this function is called, enable the disabled UI image for displaying the game win message to the play,
+    /// and enables the disabled UI text for displaying reset message to the player
     /// </summary>
     private void UpdateGameWonState()
     {
-        WinImage.SetActive(true);//enable game win UI image
+        winImage.SetActive(true);//enable game win UI image
+        resetText.SetActive(true);//enable reset UI text
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            resetGame();
+        }
+    }
+
+    /// <summary>
+    /// This function defines the actions for reseting the game
+    /// Resets the game by reload the scene again
+    /// </summary>
+    public void resetGame()
+    {
+        SceneManager.LoadScene(0);//loads the first scene in the build settings
     }
 }
