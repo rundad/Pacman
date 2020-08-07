@@ -1820,6 +1820,7 @@ MonoBehaviour:
   - {fileID: 497111538}
   - {fileID: 897082308}
   - {fileID: 1662223808}
+  WinImage: {fileID: 1459401953}
 --- !u!4 &799613901
 Transform:
   m_ObjectHideFlags: 0

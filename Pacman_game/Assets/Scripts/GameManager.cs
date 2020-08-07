@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public List<GameObject> pills;
 
+    /// <summary>
+    /// The variable that stores the game object of the game win UI image
+    /// </summary>
+    public GameObject WinImage;
+
 
 	// Use this for initialization
 	void Start () {
@@ -61,8 +66,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// This function defines the actions for the GAME_WON state of FSMState
+    /// When this function is called, enable the disabled UI image for displaying the game win message to the play
+    /// </summary>
     private void UpdateGameWonState()
     {
-        print("win");
+        WinImage.SetActive(true);//enable game win UI image
     }
 }
