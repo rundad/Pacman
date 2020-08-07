@@ -66,7 +66,20 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public List<GameObject> ghosts;
 
+    /// <summary>
+    /// The game start UI panel game object
+    /// </summary>
+    public GameObject startPanel;
 
+    /// <summary>
+    /// The game panel UI panel game object
+    /// </summary>
+    public GameObject gamePanel;
+
+    /// <summary>
+    /// The start count downs game object
+    /// </summary>
+    public GameObject startCountDowns;
 
 	// Use this for initialization
 	void Start () {
@@ -78,6 +91,8 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        setGameState(false);
 	}
 	
 	// Update is called once per frame
@@ -116,13 +131,13 @@ public class GameManager : MonoBehaviour {
 
     /// <summary>
     /// This function defines the actions for the GAME_WON state of FSMState
-    /// When this function is called, enable the disabled UI image for displaying the game win message to the play,
-    /// and enables the disabled UI text for displaying reset message to the player
+    /// When this function is called, activate the disabled UI image for displaying the game win message to the play,
+    /// and activate the disabled UI text for displaying reset message to the player
     /// </summary>
     private void UpdateGameWonState()
     {
-        winImage.SetActive(true);//enable game win UI image
-        resetText.SetActive(true);//enable reset UI text
+        winImage.SetActive(true);//activate game win UI image
+        resetText.SetActive(true);//activate reset UI text
         setGameState(false);
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -175,7 +190,7 @@ public class GameManager : MonoBehaviour {
     /// <summary>
     /// This function defines the actions for the GAME_OVER state of FSMState
     /// When the game state turned into game over state,
-    /// enables the disabled reset text UI and game over image UI.
+    /// activate the disabled reset text UI and game over image UI.
     /// Allows the player to reset the game by pressing down the enter/return key on the keyword in the game over state
     /// </summary>
     private void UpdateGameOverState()
@@ -204,5 +219,32 @@ public class GameManager : MonoBehaviour {
         {
             ghost.GetComponent<GhostController>().enabled = state;
         }
+    }
+
+    /// <summary>
+    /// This function plays the start count downs animation
+    /// Starts a coroutine to perform the start count downs
+    /// Disable the start panel
+    /// </summary>
+    public void onStartButton()
+    {
+        StartCoroutine(startCountDown());
+        startPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// This function plays the start count downs.
+    /// After playing the start count downs(about 4 second), destory the start count downs game object
+    /// Enable all moveable game objects's movement
+    /// Starts the game panel
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator startCountDown()
+    {
+        GameObject go = Instantiate(startCountDowns);
+        yield return new WaitForSeconds(4f);
+        Destroy(go);
+        setGameState(true);
+        gamePanel.SetActive(true);
     }
 }
