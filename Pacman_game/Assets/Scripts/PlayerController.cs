@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
 
     private Vector2 dest = Vector2.zero;
     //Pacman's speed
-    private float speed = 0.1f;
+    private float speed = 0.2f;
 
     //Player's score
     private int score;
