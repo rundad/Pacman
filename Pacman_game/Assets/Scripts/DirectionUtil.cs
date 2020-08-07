@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class DirectionUtil : MonoBehaviour {
 
-    //An array stores four directions
+    /// <summary>
+    /// An array stores four directions
+    /// </summary>
     public static Vector2[] directions = new Vector2[]
     {
         Vector2.up,
@@ -23,7 +25,11 @@ public class DirectionUtil : MonoBehaviour {
 		
 	}
 
-    //Returns the perpendicular right direction of the passed in direction
+    /// <summary>
+    /// Returns the perpendicular right direction of the passed in direction
+    /// </summary>
+    /// <param name="d">Direction of the ghost</param>
+    /// <returns>new direction</returns>
     public static Vector3 GetPerpenRightDir(Vector2 d)
     {
         for(int i = 0; i < directions.Length; i++)
@@ -42,7 +48,11 @@ public class DirectionUtil : MonoBehaviour {
         throw new KeyNotFoundException("Vector " + d + " is not a valid vector");
     }
 
-    //Returns the perpendicular left direction of the passed in direction
+    /// <summary>
+    /// Returns the perpendicular left direction of the passed in direction
+    /// </summary>
+    /// <param name="d">Direction of the ghost</param>
+    /// <returns>new direction</returns>
     public static Vector3 GetPerpenLeftDir(Vector2 d)
     {
         for (int i = 0; i < directions.Length; i++)

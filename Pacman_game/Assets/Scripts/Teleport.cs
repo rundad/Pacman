@@ -17,7 +17,10 @@ public class Teleport : MonoBehaviour {
 		
 	}
 
-    //Teleport the game objects that collide with this object
+    /// <summary>
+    /// Teleport the game objects that collide with this object
+    /// </summary>
+    /// <param name="collision">The collision object</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If the collide game object is pacman, use the function in pacman for teleporting

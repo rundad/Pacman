@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Pill : MonoBehaviour {
 
-    //The score that the player will earn when collects the pill
+    /// <summary>
+    /// The score that the player will earn when collects the pill
+    /// </summary>
     private int points = 100;
 
 	// Use this for initialization
@@ -17,7 +19,10 @@ public class Pill : MonoBehaviour {
 		
 	}
 
-    //When collide with pacman(pacman collects the pill), set current object to inactive(disappear)
+    /// <summary>
+    /// When collide with pacman(pacman collects the pill), set current object to inactive(disappear)
+    /// </summary>
+    /// <param name="collision">The collision object</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
