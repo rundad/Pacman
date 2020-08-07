@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void UpdateGameWonState()
     {
+        gamePanel.SetActive(false);
         winImage.SetActive(true);//activate game win UI image
         resetText.SetActive(true);//activate reset UI text
         setGameState(false);
@@ -197,6 +198,7 @@ public class GameManager : MonoBehaviour {
     {
         if(Time.time > delayTime)
         {
+            gamePanel.SetActive(false);
             winImage.SetActive(false);
             gameOverImage.SetActive(true);
             resetText.SetActive(true);

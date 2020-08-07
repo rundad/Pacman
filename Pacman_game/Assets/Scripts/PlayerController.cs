@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -30,13 +31,20 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     private bool pacman_alive;
 
+    /// <summary>
+    /// The score text UI on the canvas
+    /// </summary>
+    public Text scoreText;
+
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
 
         //stay still when the game starts
         dest = transform.position;
-	}
+
+        scoreText.text = "Score:\n\n" + 0;
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -104,7 +112,7 @@ public class PlayerController : MonoBehaviour {
     public void addScore(int points)
     {
         score += points;
-        print(score);
+        scoreText.text = "Score:\n\n" + score;
     }
 
     /// <summary>
