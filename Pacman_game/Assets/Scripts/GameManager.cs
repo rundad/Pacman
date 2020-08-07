@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public enum FSMState
     {
-        PLAY, GAME_WON, PACMAN_KILLED
+        PLAY, GAME_WON, PACMAN_KILLED, GAME_OVER
     }
 
     /// <summary>
@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour {
     /// The variable that stores the game object of the game win UI image
     /// </summary>
     public GameObject winImage;
+
+    /// <summary>
+    /// The variable that stores the game object of the game over UI image
+    /// </summary>
+    public GameObject gameOverImage;
 
     /// <summary>
     /// The variable for storing the game object of the reset UI Text
@@ -61,6 +66,8 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public List<GameObject> ghosts;
 
+
+
 	// Use this for initialization
 	void Start () {
 		if(instance == null)
@@ -80,6 +87,7 @@ public class GameManager : MonoBehaviour {
             case FSMState.PLAY: UpdatePlayState(); break;
             case FSMState.GAME_WON: UpdateGameWonState(); break;
             case FSMState.PACMAN_KILLED: UpdatePacmanKilledState(); break;
+            case FSMState.GAME_OVER: UpdateGameOverState(); break;
         }
 	}
 
@@ -139,6 +147,8 @@ public class GameManager : MonoBehaviour {
         if(Time.time > delayTime)
         {
             pacman.SetActive(false);
+            delayTime = Time.time + 1;
+            gameState = FSMState.GAME_OVER;
 
         }
     }
@@ -158,6 +168,26 @@ public class GameManager : MonoBehaviour {
         foreach(GameObject ghost in instance.ghosts)
         {
             ghost.GetComponent<GhostController>().freeze(true);
+        }
+    }
+
+    /// <summary>
+    /// This function defines the actions for the GAME_OVER state of FSMState
+    /// When the game state turned into game over state,
+    /// enables the disabled reset text UI and game over image UI.
+    /// Allows the player to reset the game by pressing down the enter/return key on the keyword in the game over state
+    /// </summary>
+    private void UpdateGameOverState()
+    {
+        if(Time.time > delayTime)
+        {
+            winImage.SetActive(false);
+            gameOverImage.SetActive(true);
+            resetText.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                resetGame();
+            }
         }
     }
 }

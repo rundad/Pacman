@@ -576,6 +576,74 @@ GameObject:
   m_PrefabParentObject: {fileID: 1459389043355346, guid: f5a9b1f06b6e6c5419ea0191473f6530,
     type: 2}
   m_PrefabInternal: {fileID: 654230439}
+--- !u!1 &408829266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 408829267}
+  - component: {fileID: 408829269}
+  - component: {fileID: 408829268}
+  m_Layer: 5
+  m_Name: GameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &408829267
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408829266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 589275142}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 10, y: -83}
+  m_SizeDelta: {x: 350, y: 180}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &408829268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408829266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: de633ebff96791b448bc78ae082c3939, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &408829269
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408829266}
 --- !u!1 &414988854 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1828012665213842, guid: f5a9b1f06b6e6c5419ea0191473f6530,
@@ -791,6 +859,7 @@ RectTransform:
   m_Children:
   - {fileID: 1459401954}
   - {fileID: 53765546}
+  - {fileID: 408829267}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1899,7 +1968,15 @@ MonoBehaviour:
   - {fileID: 897082308}
   - {fileID: 1662223808}
   winImage: {fileID: 1459401953}
+  gameOverImage: {fileID: 408829266}
   resetText: {fileID: 53765545}
+  pacman: {fileID: 1767632872}
+  pacman_died_anim: {fileID: 7400000, guid: 4c8b330afab70984d970662fde8af5c6, type: 2}
+  ghosts:
+  - {fileID: 266558924}
+  - {fileID: 983845882}
+  - {fileID: 2063551528}
+  - {fileID: 933811597}
 --- !u!4 &799613901
 Transform:
   m_ObjectHideFlags: 0
@@ -3203,7 +3280,7 @@ GameObject:
   - component: {fileID: 1767632878}
   m_Layer: 0
   m_Name: pacman
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
