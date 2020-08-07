@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 72d8cd347a7edb4458bc751b82752756
-timeCreated: 1596432877
+timeCreated: 1596766775
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: pacman_death_0
     21300002: pacman_death_1
-    21300004: pacman_death_6
-    21300006: pacman_death_7
+    21300004: pacman_death_2
+    21300006: pacman_death_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -92,7 +92,7 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -106,13 +106,13 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pacman_death_6
+      name: pacman_death_2
       rect:
         serializedVersion: 2
         x: 0
@@ -120,13 +120,13 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pacman_death_7
+      name: pacman_death_3
       rect:
         serializedVersion: 2
         x: 101
@@ -134,7 +134,7 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
