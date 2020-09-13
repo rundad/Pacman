@@ -148,6 +148,11 @@ public class PlayerController : MonoBehaviour {
         animator.SetBool("died", pacman_alive);
     }
 
+    /// <summary>
+    /// This function used to update player's lives
+    /// This function will be called when the game state has turned into pacman killed state：when pacman is killed, decrease 1 life
+    /// And also update the life images
+    /// </summary>
     public void setLives()
     {
         lives = lives - 1;
@@ -156,11 +161,19 @@ public class PlayerController : MonoBehaviour {
         life3.enabled = lives > 2;
     }
 
+    /// <summary>
+    /// This function used to return the player's lifes
+    /// </summary>
+    /// <returns>lives: the number of lives that the player has</returns>
     public int getLives()
     {
         return lives;
     }
 
+    /// <summary>
+    /// This function used to reset the position of Pacman
+    /// Resets Pacman's position by just setting the transform position and also sets the dest for updating the destination point
+    /// </summary>
     public void resetPos()
     {
         transform.position = resPos;

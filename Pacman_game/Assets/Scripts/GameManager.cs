@@ -158,7 +158,16 @@ public class GameManager : MonoBehaviour {
 
     /// <summary>
     /// This function defines the actions for the PACKMAN_KILLED state of FSMState
-    /// When pacman collided with ghosts, game state will changed to PACMAN_KILLED state and sets pacman inactive
+    /// When the death animation of Pacman has finished playing, it will turned into the Pacman Killed state
+    /// Since we have added the life system for Pacman: the player will have 3 lifes in total to complete the challenge,
+    /// if the player still has lives left over, the game state will turn back to the normal play state, otherwise, the game state will move on to the game over state
+    /// 
+    /// If back onto the play state: Update and retrieve player's lives and sets the Pacman back onto active
+    /// 
+    /// If move onto the game over state: set the game state to game over state
+    /// 
+    /// reset all of the ghosts position back to their respawn position
+    /// un-freeze the ghosts
     /// </summary>
     private void UpdatePacmanKilledState()
     {
@@ -270,7 +279,9 @@ public class GameManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// This function defines the actions of Pacman's dying state
+    /// Changes the game state to pacman killed state and sets the delay time by adding 1 to make the actions looks smooth
+    /// Disable Pacman in the scene
     /// </summary>
     private void UpdatePacmanDyingState()
     {

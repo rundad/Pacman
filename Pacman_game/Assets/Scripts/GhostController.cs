@@ -213,6 +213,10 @@ public class GhostController : MonoBehaviour {
         rb.velocity = Vector2.zero;
     }
 
+    /// <summary>
+    /// This function used to reset the position of the ghost
+    /// Resets the position by setting the transform position of the ghost
+    /// </summary>
     public void resetPos()
     {
         transform.position = resPos;
