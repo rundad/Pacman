@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="DirectionUtil">
+    <Position X="1" Y="4.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAIAAAAAAAAAAAAAAEAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\DirectionUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="5" Y="2.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="GameManager.FSMState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\GameManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EDQIAAAAAGEAAAAAAAAJAAAAEABBAAZAAABwCAAAIQA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GhostController">
+    <Position X="10" Y="3.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABACAEIAAEAAAAiAAAABBCAQAAgAIgAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GhostController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pill">
+    <Position X="9.75" Y="0.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Pill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="2" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAiAIASAAAAAIAAAAAAEACQAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teleport">
+    <Position X="5.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Teleport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

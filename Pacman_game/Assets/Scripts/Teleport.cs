@@ -7,8 +7,8 @@ public class Teleport : MonoBehaviour {
     //The teleport position
     public Vector2 teleport_to;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

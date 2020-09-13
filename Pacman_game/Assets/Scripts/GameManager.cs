@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public enum FSMState
     {
-        PLAY, GAME_WON, PACMAN_KILLED, GAME_OVER
+        PLAY, GAME_WON, PACMAN_KILLED, PACMAN_DYING, GAME_OVER
     }
 
     /// <summary>
@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour {
             case FSMState.PLAY: UpdatePlayState(); break;
             case FSMState.GAME_WON: UpdateGameWonState(); break;
             case FSMState.PACMAN_KILLED: UpdatePacmanKilledState(); break;
+            case FSMState.PACMAN_DYING: UpdatePacmanDyingState(); break;
             case FSMState.GAME_OVER: UpdateGameOverState(); break;
         }
 	}
@@ -150,7 +151,7 @@ public class GameManager : MonoBehaviour {
     /// This function defines the actions for reseting the game
     /// Resets the game by reload the scene again
     /// </summary>
-    public void resetGame()
+    private void resetGame()
     {
         SceneManager.LoadScene(0);//loads the first scene in the build settings
     }
@@ -163,9 +164,23 @@ public class GameManager : MonoBehaviour {
     {
         if(Time.time > delayTime)
         {
-            pacman.SetActive(false);
-            delayTime = Time.time + 1;
-            gameState = FSMState.GAME_OVER;
+            gameState = FSMState.PLAY;
+            pacman.GetComponent<PlayerController>().setLives();
+            if(pacman.GetComponent<PlayerController>().getLives() > 0)
+            {
+                pacman.SetActive(true);
+                pacman.GetComponent<PlayerController>().resetPos();
+                pacman.GetComponent<PlayerController>().setState(false);
+            }
+            else
+            {
+                gameState = FSMState.GAME_OVER;
+            }
+            foreach(GameObject ghost in ghosts)
+            {
+                ghost.GetComponent<GhostController>().resetPos();
+                ghost.GetComponent<GhostController>().freeze(false);
+            }
 
         }
     }
@@ -180,7 +195,7 @@ public class GameManager : MonoBehaviour {
     public static void pacmanDied()
     {
         instance.pacman.GetComponent<PlayerController>().setState(true);
-        instance.gameState = FSMState.PACMAN_KILLED;
+        instance.gameState = FSMState.PACMAN_DYING;
         instance.delayTime = Time.time + instance.pacman_died_anim.length;
         foreach(GameObject ghost in instance.ghosts)
         {
@@ -198,6 +213,10 @@ public class GameManager : MonoBehaviour {
     {
         if(Time.time > delayTime)
         {
+            foreach (GameObject ghost in ghosts)
+            {
+                ghost.GetComponent<GhostController>().freeze(true);
+            }
             gamePanel.SetActive(false);
             winImage.SetActive(false);
             gameOverImage.SetActive(true);
@@ -248,5 +267,18 @@ public class GameManager : MonoBehaviour {
         Destroy(go);
         setGameState(true);
         gamePanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void UpdatePacmanDyingState()
+    {
+        if(Time.time > delayTime)
+        {
+            gameState = FSMState.PACMAN_KILLED;
+            delayTime = Time.time + 1;
+            pacman.SetActive(false);
+        }
     }
 }

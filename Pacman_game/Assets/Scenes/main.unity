@@ -813,8 +813,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.6000004, y: -43.03943}
-  m_SizeDelta: {x: 309, y: 144.1}
+  m_AnchoredPosition: {x: 0.1, y: -24}
+  m_SizeDelta: {x: 320, y: 285.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &443569931
 MonoBehaviour:
@@ -972,7 +972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &552525431
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2216,7 +2216,7 @@ MonoBehaviour:
   - {fileID: 2063551528}
   - {fileID: 933811597}
   startPanel: {fileID: 552525430}
-  gamePanel: {fileID: 1485672500942406, guid: badd91b448c341443ac3b2c9d45bf4d0, type: 2}
+  gamePanel: {fileID: 1800486959}
   startCountDowns: {fileID: 1485672500942406, guid: badd91b448c341443ac3b2c9d45bf4d0,
     type: 2}
 --- !u!4 &799613901
@@ -3715,6 +3715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177f924ea5bbb234296685db87e531d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 443569931}
 --- !u!1 &1768336061 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1736475584497196, guid: f5a9b1f06b6e6c5419ea0191473f6530,
@@ -3754,7 +3755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1800486960
 RectTransform:
   m_ObjectHideFlags: 0

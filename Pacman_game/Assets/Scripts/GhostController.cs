@@ -7,7 +7,7 @@ public class GhostController : MonoBehaviour {
     /// <summary>
     /// The movement speed of the ghost
     /// </summary>
-    private float speed = 2.0f;
+    private float speed = 6.0f;
     /// <summary>
     /// The float value for limiting the frequency of direction changing
     /// </summary>
@@ -30,10 +30,17 @@ public class GhostController : MonoBehaviour {
     /// </summary>
     private bool fronzen = false;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    private Vector2 resPos;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         cirColl = GetComponent<CircleCollider2D>();
+
+        resPos = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -204,5 +211,10 @@ public class GhostController : MonoBehaviour {
     {
         fronzen = state;
         rb.velocity = Vector2.zero;
+    }
+
+    public void resetPos()
+    {
+        transform.position = resPos;
     }
 }

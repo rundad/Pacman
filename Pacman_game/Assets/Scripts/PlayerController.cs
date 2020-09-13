@@ -36,12 +36,35 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public Text scoreText;
 
-	// Use this for initialization
-	void Start () {
+    /// <summary>
+    /// The total lives that the player has 
+    /// </summary>
+    private int lives = 3;
+
+    /// <summary>
+    /// The first life image of Pacman
+    /// </summary>
+    public Image life1;
+
+    /// <summary>
+    /// The second life image of Pacman
+    /// </summary>
+    public Image life2;
+
+    /// <summary>
+    /// The third life image of Pacman
+    /// </summary>
+    public Image life3;
+
+    private Vector2 resPos;
+
+    // Use this for initialization
+    void Start () {
         animator = GetComponent<Animator>();
 
         //stay still when the game starts
         dest = transform.position;
+        resPos = transform.position;
 
         scoreText.text = "Score:\n\n" + 0;
     }
@@ -123,5 +146,24 @@ public class PlayerController : MonoBehaviour {
     {
         pacman_alive = aliveState;
         animator.SetBool("died", pacman_alive);
+    }
+
+    public void setLives()
+    {
+        lives = lives - 1;
+        life1.enabled = lives > 0;
+        life2.enabled = lives > 1;
+        life3.enabled = lives > 2;
+    }
+
+    public int getLives()
+    {
+        return lives;
+    }
+
+    public void resetPos()
+    {
+        transform.position = resPos;
+        dest = resPos;
     }
 }
