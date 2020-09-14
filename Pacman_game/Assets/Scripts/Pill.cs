@@ -9,6 +9,11 @@ public class Pill : MonoBehaviour {
     /// </summary>
     private int points = 100;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    private bool isSuperPill = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -21,6 +26,7 @@ public class Pill : MonoBehaviour {
 
     /// <summary>
     /// When collide with pacman(pacman collects the pill), set current object to inactive(disappear)
+    /// If the current pill game object is a super pill game object, sends a message to the game manager to turn Pacman to super Pacman mode
     /// </summary>
     /// <param name="collision">The collision object</param>
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,9 +34,21 @@ public class Pill : MonoBehaviour {
         
         if (collision.gameObject.name == "pacman")
         {
+            if (isSuperPill)
+            {
+            }
             collision.gameObject.GetComponent<PlayerController>().addScore(points);
             this.gameObject.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isSuper"></param>
+    public void setSuper(bool isSuper)
+    {
+        isSuperPill = isSuper;
     }
 
 }

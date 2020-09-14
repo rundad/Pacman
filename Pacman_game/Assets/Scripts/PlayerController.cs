@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour {
     {
         Vector2 pos = transform.position;//object current position
         RaycastHit2D hitObj = Physics2D.Linecast(pos + dir, pos);//return the object that are in the way that pacman is going
-        return (hitObj.collider == GetComponent<Collider2D>() || hitObj.collider.gameObject.tag == "pill");
+        return (hitObj.collider == GetComponent<Collider2D>() || hitObj.collider.gameObject.tag == "pill" || hitObj.collider.gameObject.tag == "ghost");
     }
 
     /// <summary>

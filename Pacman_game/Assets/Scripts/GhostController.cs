@@ -35,6 +35,11 @@ public class GhostController : MonoBehaviour {
     /// </summary>
     private Vector2 resPos;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    private int points = 400;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -199,7 +204,15 @@ public class GhostController : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
-            GameManager.pacmanDied();
+            if (GameManager.getInstance().isSuperPacman)
+            {
+                
+            }
+            else
+            {
+                GameManager.pacmanDied();
+
+            }
         }
     }
 

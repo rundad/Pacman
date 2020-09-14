@@ -81,6 +81,11 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public GameObject startCountDowns;
 
+    /// <summary>
+    /// The status of is Pacman in super pacman mode
+    /// </summary>
+    public bool isSuperPacman = false;
+
 	// Use this for initialization
 	void Start () {
 		if(instance == null)
@@ -93,7 +98,10 @@ public class GameManager : MonoBehaviour {
         }
 
         setGameState(false);
-	}
+
+        //create a super pill after 10 second of the game starts
+        Invoke("createSuperPill", 10f);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -225,6 +233,7 @@ public class GameManager : MonoBehaviour {
             foreach (GameObject ghost in ghosts)
             {
                 ghost.GetComponent<GhostController>().freeze(true);
+                ghost.GetComponent<GhostController>().enabled = false;
             }
             gamePanel.SetActive(false);
             winImage.SetActive(false);
@@ -292,4 +301,29 @@ public class GameManager : MonoBehaviour {
             pacman.SetActive(false);
         }
     }
+
+    /// <summary>
+    /// The get method of the GameManager instance
+    /// </summary>
+    /// <returns>The instance of class GameManager</returns>
+    public static GameManager getInstance()
+    {
+        return instance;
+    }
+
+    /// <summary>
+    /// This function used to create super pill game object with randomness
+    /// Gets a random number and change a normal pill to a super pill
+    /// </summary>
+    private void createSuperPill()
+    {
+        if(pills.Count != 0)
+        {
+            int temp = Random.Range(0, pills.Count);
+            pills[temp].transform.localScale = new Vector3(3, 3, 3);
+            pills[temp].GetComponent<Pill>().setSuper(true);
+        }
+    }
+
+    
 }
