@@ -206,7 +206,8 @@ public class GhostController : MonoBehaviour {
         {
             if (GameManager.getInstance().isSuperPacman)
             {
-                
+                resetPos();
+                collision.gameObject.GetComponent<PlayerController>().addScore(points);
             }
             else
             {

@@ -312,6 +312,30 @@ public class GameManager : MonoBehaviour {
     }
 
     /// <summary>
+    /// The function used to remove the eaten pill game object from the list
+    /// </summary>
+    /// <param name="go">The eaten pill game object</param>
+    public void OnEatPill(GameObject go)
+    {
+        pills.Remove(go);
+    }
+
+    /// <summary>
+    /// This function defines the actions when a super pill game object has been eaten by Pacman
+    /// Change Pacman to super Pacman mode - has the ability of killing ghosts
+    /// Freeze the ghosts and un-freeze them after 3 seconds
+    /// 
+    /// Create another super pill game object after 10 seconds
+    /// </summary>
+    public void OnEatSuperPill()
+    {
+        Invoke("createSuperPill", 10f);
+        isSuperPacman = true;
+        freezeGhosts();
+        StartCoroutine(ghostRecovery());
+    }
+
+    /// <summary>
     /// This function used to create super pill game object with randomness
     /// Gets a random number and change a normal pill to a super pill
     /// </summary>
@@ -325,5 +349,52 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    
+    /// <summary>
+    /// This function used to freeze the ghosts when Pacman has eaten a super pill
+    /// Set ghosts velocity to zero and disabled ghosts script
+    /// Repaint ghosts color
+    /// </summary>
+    private void freezeGhosts()
+    {
+        foreach(GameObject ghost in ghosts)
+        {
+            Color color = ghost.GetComponent<SpriteRenderer>().color;
+            color.a = color.a - 0.3f;
+            ghost.GetComponent<GhostController>().freeze(true);
+            ghost.GetComponent<GhostController>().enabled = false;
+            ghost.GetComponent<SpriteRenderer>().color = color;
+
+        }
+    }
+
+    /// <summary>
+    /// This function used to un-freeze the ghosts after 3 seconds of super pacman mode
+    /// Enable ghosts script
+    /// Repaint ghosts color
+    /// </summary>
+    private void unfreezeGhosts()
+    {
+        foreach (GameObject ghost in ghosts)
+        {
+            Color color = ghost.GetComponent<SpriteRenderer>().color;
+            color.a = 1.0f;
+            ghost.GetComponent<GhostController>().freeze(false);
+            ghost.GetComponent<GhostController>().enabled = true;
+            ghost.GetComponent<SpriteRenderer>().color = color;
+
+        }
+    }
+
+    /// <summary>
+    /// This function used to change super Pacman back to normal Pacman
+    /// Once Pacman has eaten a super pill, Pacman will turn into super Pacman mode for 3 second
+    /// After 3 seconds of super pacman mode, unfreeze the ghosts
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ghostRecovery()
+    {
+        yield return new WaitForSeconds(3.0f);
+        unfreezeGhosts();
+        isSuperPacman = false;
+    }
 }

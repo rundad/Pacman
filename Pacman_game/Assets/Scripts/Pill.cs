@@ -36,8 +36,10 @@ public class Pill : MonoBehaviour {
         {
             if (isSuperPill)
             {
+                GameManager.getInstance().OnEatSuperPill();
             }
             collision.gameObject.GetComponent<PlayerController>().addScore(points);
+            GameManager.getInstance().OnEatPill(gameObject);
             this.gameObject.SetActive(false);
         }
     }
