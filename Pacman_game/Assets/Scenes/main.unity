@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 266558930}
   m_Layer: 0
   m_Name: ghost
-  m_TagString: Untagged
+  m_TagString: ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2415,6 +2415,7 @@ MonoBehaviour:
   gamePanel: {fileID: 1800486959}
   startCountDowns: {fileID: 1485672500942406, guid: badd91b448c341443ac3b2c9d45bf4d0,
     type: 2}
+  isSuperPacman: 0
 --- !u!4 &799613901
 Transform:
   m_ObjectHideFlags: 0
@@ -2661,7 +2662,7 @@ GameObject:
   - component: {fileID: 933811598}
   m_Layer: 0
   m_Name: ghost (3)
-  m_TagString: Untagged
+  m_TagString: ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2887,7 +2888,7 @@ GameObject:
   - component: {fileID: 983845883}
   m_Layer: 0
   m_Name: ghost (1)
-  m_TagString: Untagged
+  m_TagString: ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4462,7 +4463,7 @@ GameObject:
   - component: {fileID: 2063551529}
   m_Layer: 0
   m_Name: ghost (2)
-  m_TagString: Untagged
+  m_TagString: ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

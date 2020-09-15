@@ -77,6 +77,11 @@ public class GameManager : MonoBehaviour {
     public GameObject gamePanel;
 
     /// <summary>
+    /// The panel for the user to select the environment of the maze
+    /// </summary>
+    public GameObject environmentPanel;
+
+    /// <summary>
     /// The start count downs game object
     /// </summary>
     public GameObject startCountDowns;
@@ -267,8 +272,38 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void onStartButton()
     {
-        StartCoroutine(startCountDown());
+        //StartCoroutine(startCountDown());
         startPanel.SetActive(false);
+        environmentPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// The function that defines the action of the Square grid environment has been selected by the player
+    /// </summary>
+    public void startSquareGrid()
+    {
+        StartCoroutine(startCountDown());
+        environmentPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// The function that responds to the Hexgonal button click event
+    /// Loads the scene of the hexagonal-grid maze environment
+    /// </summary>
+    public void startHexagonalGrid()
+    {
+        //TODO
+        //Load the scene of the hexagonal-grid maze
+    }
+
+    /// <summary>
+    /// The function that responds to the Graph button click event
+    /// Loadst he scene of the arbitrary graph maze environment
+    /// </summary>
+    public void startGraph()
+    {
+        //TODO
+        //Load the scene of the arbitrary graph maze
     }
 
     /// <summary>
