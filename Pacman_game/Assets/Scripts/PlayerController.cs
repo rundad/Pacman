@@ -56,6 +56,9 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public Image life3;
 
+    /// <summary>
+    /// The respawn position of Pacman
+    /// </summary>
     private Vector2 resPos;
 
     // Use this for initialization

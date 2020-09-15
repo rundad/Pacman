@@ -31,12 +31,12 @@ public class GhostController : MonoBehaviour {
     private bool fronzen = false;
 
     /// <summary>
-    /// 
+    /// The respawn position of the ghost
     /// </summary>
     private Vector2 resPos;
 
     /// <summary>
-    /// 
+    /// The points of the ghost that the Pacman can earn by killing the ghost
     /// </summary>
     private int points = 400;
 

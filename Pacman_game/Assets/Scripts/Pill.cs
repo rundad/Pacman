@@ -10,7 +10,7 @@ public class Pill : MonoBehaviour {
     private int points = 100;
 
     /// <summary>
-    /// 
+    /// The status that indicates the current pill object is a super pill object or not
     /// </summary>
     private bool isSuperPill = false;
 
