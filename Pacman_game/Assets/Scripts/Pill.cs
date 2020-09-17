@@ -45,9 +45,9 @@ public class Pill : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// The setter of the isSuperPill variable
     /// </summary>
-    /// <param name="isSuper"></param>
+    /// <param name="isSuper">A boolean value that indicates the value of isSuperPill</param>
     public void setSuper(bool isSuper)
     {
         isSuperPill = isSuper;

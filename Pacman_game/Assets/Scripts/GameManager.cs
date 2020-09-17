@@ -26,6 +26,16 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> pills;
 
     /// <summary>
+    /// The pacman game object in the maze
+    /// </summary>
+    public GameObject pacman;
+
+    /// <summary>
+    /// The array that stores the ghosts in the mze
+    /// </summary>
+    public List<GameObject> ghosts;
+
+    /// <summary>
     /// The variable that stores the game object of the game win UI image
     /// </summary>
     public GameObject winImage;
@@ -47,11 +57,6 @@ public class GameManager : MonoBehaviour {
     private static GameManager instance;
 
     /// <summary>
-    /// The pacman game object in the maze
-    /// </summary>
-    public GameObject pacman;
-
-    /// <summary>
     /// The pacman died animation clip
     /// </summary>
     public AnimationClip pacman_died_anim;
@@ -60,11 +65,6 @@ public class GameManager : MonoBehaviour {
     /// The variable that used to delay the executing time of some logic
     /// </summary>
     private float delayTime;
-
-    /// <summary>
-    /// The array that stores the ghosts in the mze
-    /// </summary>
-    public List<GameObject> ghosts;
 
     /// <summary>
     /// The game start UI panel game object
@@ -91,9 +91,9 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public bool isSuperPacman = false;
 
-	// Use this for initialization
-	void Start () {
-		if(instance == null)
+    // Use this for initialization
+    void Start() {
+        if (instance == null)
         {
             instance = this;
         }
@@ -107,9 +107,9 @@ public class GameManager : MonoBehaviour {
         //create a super pill after 10 second of the game starts
         Invoke("createSuperPill", 10f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         switch (gameState)
         {
             case FSMState.PLAY: UpdatePlayState(); break;
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour {
             case FSMState.PACMAN_DYING: UpdatePacmanDyingState(); break;
             case FSMState.GAME_OVER: UpdateGameOverState(); break;
         }
-	}
+    }
 
     /// <summary>
     /// This function defines the actions for the PLAY state of FSMState
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour {
     private void UpdatePlayState()
     {
         bool flag = false;
-        foreach(GameObject pill in pills)
+        foreach (GameObject pill in pills)
         {
             if (pill.activeSelf)
             {
@@ -184,11 +184,11 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void UpdatePacmanKilledState()
     {
-        if(Time.time > delayTime)
+        if (Time.time > delayTime)
         {
             gameState = FSMState.PLAY;
             pacman.GetComponent<PlayerController>().setLives();
-            if(pacman.GetComponent<PlayerController>().getLives() > 0)
+            if (pacman.GetComponent<PlayerController>().getLives() > 0)
             {
                 pacman.SetActive(true);
                 pacman.GetComponent<PlayerController>().resetPos();
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour {
             {
                 gameState = FSMState.GAME_OVER;
             }
-            foreach(GameObject ghost in ghosts)
+            foreach (GameObject ghost in ghosts)
             {
                 ghost.GetComponent<GhostController>().resetPos();
                 ghost.GetComponent<GhostController>().freeze(false);
@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour {
         instance.pacman.GetComponent<PlayerController>().setState(true);
         instance.gameState = FSMState.PACMAN_DYING;
         instance.delayTime = Time.time + instance.pacman_died_anim.length;
-        foreach(GameObject ghost in instance.ghosts)
+        foreach (GameObject ghost in instance.ghosts)
         {
             ghost.GetComponent<GhostController>().freeze(true);
         }
@@ -233,7 +233,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void UpdateGameOverState()
     {
-        if(Time.time > delayTime)
+        if (Time.time > delayTime)
         {
             foreach (GameObject ghost in ghosts)
             {
@@ -259,7 +259,7 @@ public class GameManager : MonoBehaviour {
     private void setGameState(bool state)
     {
         pacman.GetComponent<PlayerController>().enabled = state;
-        foreach(GameObject ghost in ghosts)
+        foreach (GameObject ghost in ghosts)
         {
             ghost.GetComponent<GhostController>().enabled = state;
         }
@@ -275,6 +275,14 @@ public class GameManager : MonoBehaviour {
         //StartCoroutine(startCountDown());
         startPanel.SetActive(false);
         environmentPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// The callback function of the Exit button on the GUI
+    /// </summary>
+    public void onExitButton()
+    {
+        Application.Quit();
     }
 
     /// <summary>
