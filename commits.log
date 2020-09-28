@@ -1,0 +1,257 @@
+commit 9639c2028320f7041f339a19bf713b2919ea2f57
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Sep 17 13:23:49 2020 +0800
+
+    Added the exit button to the GUI and assigned its corresponding callback function to close the application
+
+commit 846481638409c5f47d25a7b7c347f5698e1460ea
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Tue Sep 15 11:28:39 2020 +0800
+
+    Updated the comments of the methods
+
+commit 2d904cf06dc4470744535cd3cb8e17d35d78d99d
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Tue Sep 15 10:37:59 2020 +0800
+
+    Added the menu panel for selecting different types of the maze environment: Square grid button is functional, pending the other two buttons
+
+commit c07209b5cd270c75de94f0dc8cc2130f69d1ddfd
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Sep 14 12:46:35 2020 +0800
+
+    Added super pacman mode by eating super pill and enabled super pacman kill ghosts
+
+commit 9f84d26bdad915dd2c7a5afbadf2b54e6469fdbc
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Sep 14 11:48:29 2020 +0800
+
+    Added functions for creating super pill game objects with randomness
+
+commit 8e27998b4725b8cec500a434329d74d7927c05f9
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Sun Sep 13 11:28:48 2020 +0800
+
+    Added the life system for Pacman: added a new game state - pacman dying, update pacman killed function and added UI image objects in player controller
+
+commit 218c6f2c2a86449a84abb2e8215d0175a3484938
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Sun Sep 13 11:12:54 2020 +0800
+
+    Added a menu item for the user to select the type of maze environment
+
+commit 1e0d1ff26543a91c7a621396357f741f6bfc742f
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 14:46:00 2020 +0800
+
+    Updated the comments of the scripts
+
+commit 6171e81d0379a0c120d252a014d1d7089fc2a01b
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 14:35:13 2020 +0800
+
+    Created a game panel for displaying the score, updated add score function to display the score on the game panel
+
+commit 910d7fcb20900142120c7fea6e469838e5ef1de8
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 14:19:23 2020 +0800
+
+    Added a start button UI for starting the game, and also a start count down animation before the game starts
+
+commit 0f19bf67ad0e0396a53f28c1250ef9ba8d76cfbe
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 13:19:36 2020 +0800
+
+    Added a function to freeze all movable game objects in game won state
+
+commit 3da13d53d2c0e8964937b82688be6c0b25ba495e
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 13:05:40 2020 +0800
+
+    Added game over UI image into the canvas
+
+commit beb52cac1d6552134eaf8d195b19e45be3e1a632
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 12:54:56 2020 +0800
+
+    Updated the functions for PACMAN_KILLED state: added freeze function for the ghosts to freeze them when pacman has died
+
+commit 46f13cbda35c909cf1dd959e1cb7956425455818
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 11:43:47 2020 +0800
+
+    Added a function for the transition of pacman's die animation, added collision function for ghost to kill pacman, added new game state: PACMAN_KILLED
+
+commit fb7d08b18dc3aac0acf46b5b5f85a560e87ccb0e
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 11:15:18 2020 +0800
+
+    Updated the game won state function
+
+commit 27f5607d904f833c1d64667eb0aa98e48cda5988
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 11:05:40 2020 +0800
+
+    Created new folder called Font, added a new font into the folder, created a new UI text for displaying reset message
+
+commit be270a3cea5068ddf67d35f88ade345a16070378
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 11:00:30 2020 +0800
+
+    Updated the function for game_won state
+
+commit 2e5086fae0f589d98c2070044c11e18a512bfa50
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 10:54:33 2020 +0800
+
+    Created the canvas and added an UI image for displaying the game win message
+
+commit 930e1f434f44630e15c108e185a8d3493d9a8534
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 10:41:50 2020 +0800
+
+    Implemented two game states of the game: PLAY, GAME_WON
+
+commit 1f02c3eee6c1517216b1c56733eebf05630f1ac4
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Fri Aug 7 10:26:33 2020 +0800
+
+    Constructed pacman death animation
+
+commit d0005b0faad475bb35673e32c0fb377a7070d641
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 15:04:48 2020 +0800
+
+    Added game manager object into the maze for managing the game and also added its corresponding script
+
+commit 4c84c60c47e24f7d1c28685e5849d21a0d1b517b
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 15:01:38 2020 +0800
+
+    Updated change direction logic - the ghosts will change dir randomly when collided with other ghosts, enabled teleport for ghosts
+
+commit ae1deb1ba35eba695a80b77520e9ab4940abdaa6
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 14:35:15 2020 +0800
+
+    Updated change direction logic by adding a new function - change direction randomly, and also limits frequency of the direction changes
+
+commit 0abbe9eb7023bd9fe35b027e2229b2aaae11c6df
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 14:24:37 2020 +0800
+
+    Added a new function for changing ghosts eyes direction
+
+commit 6df8b035ea64698ef1df0c9cd30be2b2a75dc132
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 14:15:04 2020 +0800
+
+    Added "wall" tag for wall game objects, updated ghost controller script and tested the change dir(successful)
+
+commit 36753b73160bd5aa2bbae7843a26e67d4813a158
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 14:05:07 2020 +0800
+
+    Implemented ghost's movement functionality and updated the functions for changing direction
+
+commit d3ae161d4bf34e7a6c6010cf82ac944c813f111f
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 13:44:14 2020 +0800
+
+    Created a new script for ghost - GhostController.cs, and  also a util script which will be used later on
+
+commit 85b2f51cc6698f53dbd680a32563f9eee408e920
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 13:10:52 2020 +0800
+
+    Implemented add score functionality when pacman collects a pill, added a ghost into the maze and created ghost animation
+
+commit 906f808a95606c8085e1d0e2807b843dee87d9fb
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 12:57:52 2020 +0800
+
+    Added two teleport points in the maze that allows the game objects to teleport
+
+commit 02b674f7f1f2f735dbcac3f37bd042be8c6428fe
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Thu Aug 6 12:45:51 2020 +0800
+
+    Implemented pacman collects pills functionality: created new script for pills(Pill.cs)
+
+commit 1d149afe8e1de69cf9cfe57f9a5aebc172239c34
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Tue Aug 4 11:23:59 2020 +0800
+
+    Updated pacman animator and added code for moving and idle animation transition
+
+commit 7c0a081ca4b0dde1b6683173ae327f1eb0948c89
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Tue Aug 4 11:13:33 2020 +0800
+
+    Updated pacman movement logic, only allow to move when the infront object is not a wall
+
+commit 7f63fcd0bdfee80c3edba87830d2117add2ed937
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Tue Aug 4 10:53:32 2020 +0800
+
+    Implements changing rotation of pacman
+
+commit d4531618477df8ad5eb172b005beceffc415d486
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Tue Aug 4 10:44:02 2020 +0800
+
+    setting all the pills to is trigger
+
+commit 9ff2986b883d1677063286fdec6420699d000b1e
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Tue Aug 4 10:42:13 2020 +0800
+
+    Finished the basic movement for pacman
+
+commit 4ff71fb9a55cb752546a45eb99dde96478617c74
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 14:31:27 2020 +0800
+
+    Added collider and rigidbody component to pacman
+
+commit 2ad7f1ba09a9391fc2668db36f8d4f36beb3db73
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 14:28:16 2020 +0800
+
+    Updated two pacman animations, added pills to the maze
+
+commit 5836090a6cfab873cdcd8e2ac3d093e0e70d5f94
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 14:17:01 2020 +0800
+
+    Created moving and idle animation for pacman
+
+commit 9e2fb83e89e26ad168404b2bfc571d05345c4442
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 14:05:39 2020 +0800
+
+    Finish constructing the maze
+
+commit 2b2c8838c6e434c41703c8dd9ce0b0c2e3620840
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 13:36:49 2020 +0800
+
+    Added new folder Prefabs and added sprites for the project to the sprites folder
+
+commit 0329d05a12dea9d7fa672177d2a314db6e0b2aab
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 13:27:45 2020 +0800
+
+    setting up the folders for the project, organised the scene to the scenes folder
+
+commit 6821d9280bf2ea25f98e4f925b83df40b05101db
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 13:25:08 2020 +0800
+
+    Initial commit: A unity project has been created called pacman game
+
+commit 9c4530b3d0984f33b89ea3872958622947486a46
+Author: rundad <48462000+rundad@users.noreply.github.com>
+Date:   Mon Aug 3 13:19:53 2020 +0800
+
+    Initial commit
