@@ -6,7 +6,7 @@ public class HexGridGenerator : MonoBehaviour {
 
     public GameObject hexTile;
 
-    int mapWidth = 25;
+    int mapWidth = 13;
     int mapHeight = 12;
 
     float tileXoffset = 1.8f;
@@ -31,11 +31,11 @@ public class HexGridGenerator : MonoBehaviour {
                 GameObject TileGO = Instantiate(hexTile);
                 if(z % 2 == 0)
                 {
-                    TileGO.transform.position = new Vector3(x * tileXoffset, 0, z * tileZoffset);
+                    TileGO.transform.position = new Vector3(x * tileXoffset, z * tileZoffset, 0);
                 }
                 else
                 {
-                    TileGO.transform.position = new Vector3(x * tileXoffset + tileXoffset / 2, 0, z * tileZoffset);
+                    TileGO.transform.position = new Vector3(x * tileXoffset + tileXoffset / 2, z * tileZoffset, 0);
                 }
             }
         }
