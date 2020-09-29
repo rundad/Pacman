@@ -5,6 +5,7 @@ using UnityEngine;
 public class HexGridGenerator : MonoBehaviour {
 
     public GameObject hexTile;
+    public GameObject pill;
 
     int mapWidth = 13;
     int mapHeight = 12;
@@ -12,8 +13,8 @@ public class HexGridGenerator : MonoBehaviour {
     float tileXoffset = 1.8f;
     float tileZoffset = 1.565f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         createHexTileMap();
 	}
 	
@@ -24,19 +25,28 @@ public class HexGridGenerator : MonoBehaviour {
 
     private void createHexTileMap()
     {
-        for(int x = 0; x <= mapWidth; x++)
+        for(int xaxis = 0; xaxis <= mapWidth; xaxis++)
         {
-            for(int z = 0; z <= mapHeight; z++)
+            for(int zaxis = 0; zaxis <= mapHeight; zaxis++)
             {
                 GameObject TileGO = Instantiate(hexTile);
-                if(z % 2 == 0)
+                GameObject pillGO = Instantiate(pill);
+
+                GameObject childGO = TileGO.transform.GetChild(0).gameObject;
+                childGO.transform.position = new Vector3(childGO.transform.position.x, -0.8f, 0.8600707f);
+
+                if(zaxis % 2 == 0)
                 {
-                    TileGO.transform.position = new Vector3(x * tileXoffset, z * tileZoffset, 0);
+                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileZoffset - 0.8f, 0);
+                    TileGO.transform.position = new Vector3(xaxis * tileXoffset, zaxis * tileZoffset, 0);
+                    
                 }
                 else
                 {
-                    TileGO.transform.position = new Vector3(x * tileXoffset + tileXoffset / 2, z * tileZoffset, 0);
+                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 + 2.95f, zaxis * tileZoffset - 0.8f, 0);
+                    TileGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 , zaxis * tileZoffset, 0);
                 }
+
             }
         }
     }
