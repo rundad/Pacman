@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main.unity
     guid: 5591f8a1d9185b749885b8bb6392706a
+  - enabled: 1
+    path: Assets/Scenes/hexagonal_grid.unity
+    guid: cb55ef82d1f544149b4bb87c5f0b2d23

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// Pacman's movement speed
     /// </summary>
-    private float speed = 0.2f;
+    private float speed;
 
     /// <summary>
     /// The total score that the player have earned during the game
@@ -35,11 +35,6 @@ public class PlayerController : MonoBehaviour {
     /// The score text UI on the canvas
     /// </summary>
     public Text scoreText;
-
-    /// <summary>
-    /// The total lives that the player has 
-    /// </summary>
-    private int lives = 3;
 
     /// <summary>
     /// The first life image of Pacman
@@ -61,9 +56,16 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     private Vector2 resPos;
 
+    /// <summary>
+    /// The Player object
+    /// </summary>
+    private Player pacman;
+
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
+        pacman = new Player();
+        speed = pacman.getSpeed();
 
         //stay still when the game starts
         dest = transform.position;
@@ -158,7 +160,8 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public void setLives()
     {
-        lives = lives - 1;
+        pacman.setLives();
+        int lives = pacman.getLives();
         life1.enabled = lives > 0;
         life2.enabled = lives > 1;
         life3.enabled = lives > 2;
@@ -170,7 +173,7 @@ public class PlayerController : MonoBehaviour {
     /// <returns>lives: the number of lives that the player has</returns>
     public int getLives()
     {
-        return lives;
+        return pacman.getLives();
     }
 
     /// <summary>
