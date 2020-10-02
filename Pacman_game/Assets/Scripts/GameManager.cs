@@ -67,24 +67,9 @@ public class GameManager : MonoBehaviour {
     private float delayTime;
 
     /// <summary>
-    /// The game start UI panel game object
-    /// </summary>
-    public GameObject startPanel;
-
-    /// <summary>
     /// The game panel UI panel game object
     /// </summary>
     public GameObject gamePanel;
-
-    /// <summary>
-    /// The panel for the user to select the environment of the maze
-    /// </summary>
-    public GameObject environmentPanel;
-
-    /// <summary>
-    /// The start count downs game object
-    /// </summary>
-    public GameObject startCountDowns;
 
     /// <summary>
     /// The status of is Pacman in super pacman mode
@@ -256,7 +241,7 @@ public class GameManager : MonoBehaviour {
     /// Disable all moveable game objects movement by disable game objects controller
     /// </summary>
     /// <param name="state"></param>
-    private void setGameState(bool state)
+    public void setGameState(bool state)
     {
         pacman.GetComponent<PlayerController>().enabled = state;
         foreach (GameObject ghost in ghosts)
@@ -266,68 +251,11 @@ public class GameManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// This function plays the start count downs animation
-    /// Starts a coroutine to perform the start count downs
-    /// Disable the start panel
-    /// </summary>
-    public void onStartButton()
-    {
-        //StartCoroutine(startCountDown());
-        startPanel.SetActive(false);
-        environmentPanel.SetActive(true);
-    }
-
-    /// <summary>
     /// The callback function of the Exit button on the GUI
     /// </summary>
     public void onExitButton()
     {
         Application.Quit();
-    }
-
-    /// <summary>
-    /// The function that defines the action of the Square grid environment has been selected by the player
-    /// </summary>
-    public void startSquareGrid()
-    {
-        StartCoroutine(startCountDown());
-        environmentPanel.SetActive(false);
-    }
-
-    /// <summary>
-    /// The function that responds to the Hexgonal button click event
-    /// Loads the scene of the hexagonal-grid maze environment
-    /// </summary>
-    public void startHexagonalGrid()
-    {
-        //TODO
-        //Load the scene of the hexagonal-grid maze
-    }
-
-    /// <summary>
-    /// The function that responds to the Graph button click event
-    /// Loadst he scene of the arbitrary graph maze environment
-    /// </summary>
-    public void startGraph()
-    {
-        //TODO
-        //Load the scene of the arbitrary graph maze
-    }
-
-    /// <summary>
-    /// This function plays the start count downs.
-    /// After playing the start count downs(about 4 second), destory the start count downs game object
-    /// Enable all moveable game objects's movement
-    /// Starts the game panel
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator startCountDown()
-    {
-        GameObject go = Instantiate(startCountDowns);
-        yield return new WaitForSeconds(4f);
-        Destroy(go);
-        setGameState(true);
-        gamePanel.SetActive(true);
     }
 
     /// <summary>

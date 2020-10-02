@@ -4,14 +4,35 @@ using UnityEngine;
 
 public class HexGridGenerator : MonoBehaviour {
 
+    /// <summary>
+    /// The hexagon tile
+    /// </summary>
     public GameObject hexTile;
+
+    /// <summary>
+    /// The pill objects that are going to place in the maze
+    /// </summary>
     public GameObject pill;
+    
+    /// <summary>
+    /// The width of the maze
+    /// </summary>
+    private int mapWidth = 13;
 
-    int mapWidth = 13;
-    int mapHeight = 12;
+    /// <summary>
+    /// The height of the maze
+    /// </summary>
+    private int mapHeight = 12;
+    
+    /// <summary>
+    /// The offset/distance of the tiles in the x axis
+    /// </summary>
+    private float tileXoffset = 1.8f;
 
-    float tileXoffset = 1.8f;
-    float tileZoffset = 1.565f;
+    /// <summary>
+    /// The offset/distance of the tiles in the y axis
+    /// </summary>
+    private float tileYoffset = 1.565f;
 
     // Use this for initialization
     void Start () {
@@ -23,6 +44,9 @@ public class HexGridGenerator : MonoBehaviour {
 		
 	}
 
+    /// <summary>
+    /// The function for generating the hexagonal grid maze
+    /// </summary>
     private void createHexTileMap()
     {
         for(int xaxis = 0; xaxis <= mapWidth; xaxis++)
@@ -37,17 +61,27 @@ public class HexGridGenerator : MonoBehaviour {
 
                 if(zaxis % 2 == 0)
                 {
-                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileZoffset - 0.8f, 0);
-                    TileGO.transform.position = new Vector3(xaxis * tileXoffset, zaxis * tileZoffset, 0);
+                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileYoffset - 0.8f, 0);
+                    TileGO.transform.position = new Vector3(xaxis * tileXoffset, zaxis * tileYoffset, 0);
                     
                 }
                 else
                 {
-                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 + 2.95f, zaxis * tileZoffset - 0.8f, 0);
-                    TileGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 , zaxis * tileZoffset, 0);
+                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 + 2.95f, zaxis * tileYoffset - 0.8f, 0);
+                    TileGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 , zaxis * tileYoffset, 0);
                 }
 
             }
         }
+    }
+
+    /// <summary>
+    /// The function that responds to the Hexgonal button click event
+    /// Loads the scene of the hexagonal-grid maze environment
+    /// </summary>
+    public void startHexagonalGrid()
+    {
+        //TODO
+        //Load the scene of the hexagonal-grid maze
     }
 }
