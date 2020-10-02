@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
-        pacman = new Player();
+        pacman = Player.getInstance();
         speed = pacman.getSpeed();
 
         //stay still when the game starts

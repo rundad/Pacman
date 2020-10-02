@@ -36,7 +36,7 @@ public class HexGridGenerator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        createHexTileMap();
+        
 	}
 	
 	// Update is called once per frame
@@ -83,5 +83,6 @@ public class HexGridGenerator : MonoBehaviour {
     {
         //TODO
         //Load the scene of the hexagonal-grid maze
+        createHexTileMap();
     }
 }

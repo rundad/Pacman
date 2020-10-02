@@ -13,17 +13,17 @@ public class Player
     /// <summary>
     /// The total lives that the player has 
     /// </summary>
-    private int lives = 3;
+    private int lives;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    /// <summary>
+    /// The instance of the player
+    /// </summary>
+    private static Player instance;
+
+    private Player()
+    {
+
+    }
 
     /// <summary>
     /// This function used to update player's lives
@@ -54,5 +54,18 @@ public class Player
         return speed;
     }
 
+    /// <summary>
+    /// The get method of the Player instance
+    /// </summary>
+    /// <returns></returns>
+    public static Player getInstance()
+    {
+        if(instance == null)
+        {
+            instance = new Player();
+        }
+        instance.lives = 3;
+        return instance;
+    }
     
 }
