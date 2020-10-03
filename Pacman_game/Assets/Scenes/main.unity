@@ -1426,7 +1426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &552525431
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 797367100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2e611783ef6ed47832c7c47f4cb758, type: 3}
+  m_Script: {fileID: 11500000, guid: 6665c88eea29f4c498247cef8df0afea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hexTile: {fileID: 1279018961795544, guid: 3cfe29c6824da86479d65c5fc9773457, type: 2}
@@ -2642,6 +2642,7 @@ MonoBehaviour:
   environmentPanel: {fileID: 2118101567}
   WidthInputField: {fileID: 300956849}
   HeightInputField: {fileID: 886262574}
+  instance: {fileID: 0}
 --- !u!4 &797367102
 Transform:
   m_ObjectHideFlags: 0
@@ -3125,7 +3126,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Maze Height: '
+  m_Text: 'Maze Height: 8-13'
 --- !u!222 &874042756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3836,7 +3837,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Maze Width: '
+  m_Text: 'Maze Width: 8-13'
 --- !u!222 &1070893665
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4817,7 +4818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1480254437
 RectTransform:
   m_ObjectHideFlags: 0

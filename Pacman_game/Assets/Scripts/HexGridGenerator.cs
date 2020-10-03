@@ -19,12 +19,12 @@ public class HexGridGenerator : MonoBehaviour {
     /// <summary>
     /// The width of the maze
     /// </summary>
-    private int mapWidth = 13;
+    private int mapWidth;
 
     /// <summary>
     /// The height of the maze
     /// </summary>
-    private int mapHeight = 12;
+    private int mapHeight;
     
     /// <summary>
     /// The offset/distance of the tiles in the x axis
@@ -36,30 +36,16 @@ public class HexGridGenerator : MonoBehaviour {
     /// </summary>
     private float tileYoffset = 1.565f;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public GameObject sizePanel;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public GameObject environmentPanel;
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public GameObject WidthInputField;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public GameObject HeightInputField;
+    private static HexGridManager instance;
 
     // Use this for initialization
     void Start () {
-        
+
+        mapWidth = instance.getWidth();
+        mapHeight = instance.getHeight();
+
+        createHexTileMap();
+
 	}
 	
 	// Update is called once per frame
@@ -72,9 +58,10 @@ public class HexGridGenerator : MonoBehaviour {
     /// </summary>
     private void createHexTileMap()
     {
-        for(int xaxis = 0; xaxis <= mapWidth; xaxis++)
+
+        for (int xaxis = 0; xaxis < mapWidth; xaxis++)
         {
-            for(int zaxis = 0; zaxis <= mapHeight; zaxis++)
+            for(int zaxis = 0; zaxis < mapHeight; zaxis++)
             {
                 GameObject TileGO = Instantiate(hexTile);
                 GameObject pillGO = Instantiate(pill);
@@ -98,56 +85,9 @@ public class HexGridGenerator : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// The function that responds to the Hexgonal button click event
-    /// Loads the scene of the hexagonal-grid maze environment
-    /// </summary>
-    public void startHexagonalGrid()
+    public static void setInstance(HexGridManager hgm)
     {
-        //TODO
-        //Load the scene of the hexagonal-grid maze
-        //createHexTileMap();
-        SceneManager.LoadScene(1);
-        
+        instance = hgm;
     }
 
-    /// <summary>
-    /// The function that responds to the Hexgonal button click event
-    /// Loads the scene of the hexagonal-grid maze environment
-    /// </summary>
-    public void setMazeSize()
-    {
-        //TODO
-        //Load the scene of the hexagonal-grid maze
-        //createHexTileMap();
-        //SceneManager.LoadScene(1);
-        environmentPanel.SetActive(false);
-        sizePanel.SetActive(true);
-    }
-
-    public void setWidth()
-    {
-        InputField widthIF = WidthInputField.GetComponent<InputField>();
-        string value = widthIF.text;
-        print(value);
-        if (string.IsNullOrEmpty(value))
-        {
-            Debug.LogError("Width is missing");
-            return;
-        }
-        mapWidth = int.Parse(value);
-    }
-
-    public void setHeight()
-    {
-        InputField heightIF = HeightInputField.GetComponent<InputField>();
-        string value = heightIF.text;
-        print(value);
-        if (string.IsNullOrEmpty(value))
-        {
-            Debug.LogError("height is missing");
-            return;
-        }
-        mapHeight = int.Parse(value);
-    }
 }
