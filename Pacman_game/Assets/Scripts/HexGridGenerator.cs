@@ -36,6 +36,9 @@ public class HexGridGenerator : MonoBehaviour {
     /// </summary>
     private float tileYoffset = 1.565f;
 
+    /// <summary>
+    /// The instance of HexGridManager
+    /// </summary>
     private static HexGridManager instance;
 
     // Use this for initialization
@@ -85,6 +88,10 @@ public class HexGridGenerator : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// The set method for setting the value of the instance property
+    /// </summary>
+    /// <param name="hgm"></param>
     public static void setInstance(HexGridManager hgm)
     {
         instance = hgm;

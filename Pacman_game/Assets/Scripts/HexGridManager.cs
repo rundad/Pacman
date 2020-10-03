@@ -7,16 +7,6 @@ using UnityEngine.UI;
 public class HexGridManager : MonoBehaviour {
 
     /// <summary>
-    /// The hexagon tile
-    /// </summary>
-    public GameObject hexTile;
-
-    /// <summary>
-    /// The pill objects that are going to place in the maze
-    /// </summary>
-    public GameObject pill;
-
-    /// <summary>
     /// The width of the maze
     /// </summary>
     private int mapWidth = 13;
@@ -27,36 +17,29 @@ public class HexGridManager : MonoBehaviour {
     private int mapHeight = 12;
 
     /// <summary>
-    /// The offset/distance of the tiles in the x axis
-    /// </summary>
-    private float tileXoffset = 1.8f;
-
-    /// <summary>
-    /// The offset/distance of the tiles in the y axis
-    /// </summary>
-    private float tileYoffset = 1.565f;
-
-    /// <summary>
-    /// 
+    /// The panel that allows the user to enter the size of the maze
     /// </summary>
     public GameObject sizePanel;
 
     /// <summary>
-    /// 
+    /// The select panel for selecting the type of the maze
     /// </summary>
     public GameObject environmentPanel;
 
 
     /// <summary>
-    /// 
+    /// The input field for the width of the maze
     /// </summary>
     public GameObject WidthInputField;
 
     /// <summary>
-    /// 
+    /// The input field for the heigth of the maze
     /// </summary>
     public GameObject HeightInputField;
 
+    /// <summary>
+    /// The instance of HexGridManager
+    /// </summary>
     public HexGridManager instance;
 
     // Use this for initialization
@@ -75,38 +58,8 @@ public class HexGridManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// The function for generating the hexagonal grid maze
-    /// </summary>
-    private void createHexTileMap()
-    {
-        for (int xaxis = 0; xaxis <= mapWidth; xaxis++)
-        {
-            for (int zaxis = 0; zaxis <= mapHeight; zaxis++)
-            {
-                GameObject TileGO = Instantiate(hexTile);
-                GameObject pillGO = Instantiate(pill);
-
-                GameObject childGO = TileGO.transform.GetChild(0).gameObject;
-                childGO.transform.position = new Vector3(childGO.transform.position.x, -0.8f, 0.8600707f);
-
-                if (zaxis % 2 == 0)
-                {
-                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileYoffset - 0.8f, 0);
-                    TileGO.transform.position = new Vector3(xaxis * tileXoffset, zaxis * tileYoffset, 0);
-
-                }
-                else
-                {
-                    pillGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 + 2.95f, zaxis * tileYoffset - 0.8f, 0);
-                    TileGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2, zaxis * tileYoffset, 0);
-                }
-
-            }
-        }
-    }
-
-    /// <summary>
     /// The function that responds to the Hexgonal button click event
+    /// Checks the width and height of the maze appropriate or not
     /// Loads the scene of the hexagonal-grid maze environment
     /// </summary>
     public void startHexagonalGrid()
@@ -114,6 +67,13 @@ public class HexGridManager : MonoBehaviour {
         //TODO
         //Load the scene of the hexagonal-grid maze
         //createHexTileMap();
+        bool widthValid = mapWidth >= 8 && mapWidth <=13;
+        bool heightValid = mapHeight >= 8 && mapHeight <= 13;
+        if(!(widthValid && heightValid))
+        {
+            Debug.LogError("Inappropriate width or height");
+            return;
+        }
         HexGridGenerator.setInstance(instance);
         SceneManager.LoadScene(1);
 
@@ -133,6 +93,10 @@ public class HexGridManager : MonoBehaviour {
         sizePanel.SetActive(true);
     }
 
+    /// <summary>
+    /// The callback function of retriving the value of the WidthInputField
+    /// And assign the value to the width property
+    /// </summary>
     public void setWidth()
     {
         InputField widthIF = WidthInputField.GetComponent<InputField>();
@@ -146,6 +110,10 @@ public class HexGridManager : MonoBehaviour {
         mapWidth = int.Parse(value);
     }
 
+    /// <summary>
+    /// The callback function of retriving the value of the HeightInputField
+    /// And assign the value to the height property
+    /// </summary>
     public void setHeight()
     {
         InputField heightIF = HeightInputField.GetComponent<InputField>();
@@ -159,11 +127,19 @@ public class HexGridManager : MonoBehaviour {
         mapHeight = int.Parse(value);
     }
 
+    /// <summary>
+    /// Return the width of the maze
+    /// </summary>
+    /// <returns></returns>
     public int getWidth()
     {
         return mapWidth;
     }
 
+    /// <summary>
+    /// Return the height of the maze
+    /// </summary>
+    /// <returns></returns>
     public int getHeight()
     {
         return mapHeight;
