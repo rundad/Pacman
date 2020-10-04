@@ -5,6 +5,9 @@ using UnityEngine;
 public class PillController : MonoBehaviour
 {
 
+    /// <summary>
+    /// The pill object of the Pill class that an pill game object holds
+    /// </summary>
     private Pill pillInstance;
 
     // Use this for initialization
