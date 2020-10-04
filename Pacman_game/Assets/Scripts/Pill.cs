@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pill : MonoBehaviour {
+public class Pill{
 
     /// <summary>
     /// The score that the player will earn when collects the pill
@@ -18,30 +18,15 @@ public class Pill : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     /// <summary>
-    /// When collide with pacman(pacman collects the pill), set current object to inactive(disappear)
-    /// If the current pill game object is a super pill game object, sends a message to the game manager to turn Pacman to super Pacman mode
+    /// The get method of the points property
+    /// Returns the value of the points attribute
     /// </summary>
-    /// <param name="collision">The collision object</param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    /// <returns></returns>
+    public int getPoints()
     {
-        
-        if (collision.gameObject.name == "pacman")
-        {
-            if (isSuperPill)
-            {
-                GameManager.getInstance().OnEatSuperPill();
-            }
-            collision.gameObject.GetComponent<PlayerController>().addScore(points);
-            GameManager.getInstance().OnEatPill(gameObject);
-            this.gameObject.SetActive(false);
-        }
+        return points;
     }
 
     /// <summary>
@@ -51,6 +36,16 @@ public class Pill : MonoBehaviour {
     public void setSuper(bool isSuper)
     {
         isSuperPill = isSuper;
+    }
+
+    /// <summary>
+    /// The get method of the isSuperPill property
+    /// Returns the value of the isSuperPill attribute
+    /// </summary>
+    /// <returns></returns>
+    public bool getSuper()
+    {
+        return isSuperPill;
     }
 
 }

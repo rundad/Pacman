@@ -316,7 +316,7 @@ public class GameManager : MonoBehaviour {
         {
             int temp = Random.Range(0, pills.Count);
             pills[temp].transform.localScale = new Vector3(3, 3, 3);
-            pills[temp].GetComponent<Pill>().setSuper(true);
+            pills[temp].GetComponent<PillController>().setSuper(true);
         }
     }
 
