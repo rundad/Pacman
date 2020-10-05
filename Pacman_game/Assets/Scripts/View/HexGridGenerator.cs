@@ -41,6 +41,9 @@ public class HexGridGenerator : MonoBehaviour {
     /// </summary>
     private static HexGridManager instance;
 
+
+    public GameObject pacman;
+
     // Use this for initialization
     void Start () {
 
@@ -61,7 +64,7 @@ public class HexGridGenerator : MonoBehaviour {
     /// </summary>
     private void createHexTileMap()
     {
-
+        bool pacman_spawned = false;
         for (int xaxis = 0; xaxis < mapWidth; xaxis++)
         {
             for(int zaxis = 0; zaxis < mapHeight; zaxis++)
@@ -76,6 +79,12 @@ public class HexGridGenerator : MonoBehaviour {
                 {
                     pillGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileYoffset - 0.8f, 0);
                     TileGO.transform.position = new Vector3(xaxis * tileXoffset, zaxis * tileYoffset, 0);
+                    if (!pacman_spawned)
+                    {
+                        GameObject pacmanGO = Instantiate(pacman);
+                        pacmanGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileYoffset - 0.8f, 0);
+                        pacman_spawned = true;
+                    }
                     
                 }
                 else
