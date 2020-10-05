@@ -84,6 +84,7 @@ public class HexGridGenerator : MonoBehaviour {
                         GameObject pacmanGO = Instantiate(pacman);
                         pacmanGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileYoffset - 0.8f, 0);
                         pacman_spawned = true;
+                        pacmanGO.AddComponent<MovementController>();
                     }
                     
                 }
