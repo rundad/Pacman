@@ -71,6 +71,9 @@ public class HexGridGenerator : MonoBehaviour {
             {
                 GameObject TileGO = Instantiate(hexTile);
                 GameObject pillGO = Instantiate(pill);
+                pillGO.AddComponent<CircleCollider2D>();
+                pillGO.GetComponent<CircleCollider2D>().isTrigger = true;
+                
 
                 GameObject childGO = TileGO.transform.GetChild(0).gameObject;
                 childGO.transform.position = new Vector3(childGO.transform.position.x, -0.8f, 0.8600707f);
@@ -84,6 +87,7 @@ public class HexGridGenerator : MonoBehaviour {
                         GameObject pacmanGO = Instantiate(pacman);
                         pacmanGO.transform.position = new Vector3(xaxis * tileXoffset + 2.95f, zaxis * tileYoffset - 0.8f, 0);
                         pacman_spawned = true;
+                        pacmanGO.AddComponent<CircleCollider2D>();
                         pacmanGO.AddComponent<MovementController>();
                     }
                     
@@ -93,6 +97,7 @@ public class HexGridGenerator : MonoBehaviour {
                     pillGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 + 2.95f, zaxis * tileYoffset - 0.8f, 0);
                     TileGO.transform.position = new Vector3(xaxis * tileXoffset + tileXoffset / 2 , zaxis * tileYoffset, 0);
                 }
+                pillGO.name = pillGO.transform.position + "";
 
             }
         }

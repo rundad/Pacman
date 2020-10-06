@@ -27,6 +27,8 @@ public class MovementController : MonoBehaviour {
             hasMoved = true;
             GetMovementDirection();
         }
+
+        
 	}
 
 
@@ -62,6 +64,23 @@ public class MovementController : MonoBehaviour {
             }
             transform.position += direction;
         }
+        Vector2 pos = transform.position;
+        pos.x += 0.05f;
+        GameObject go = GameObject.Find(pos + "");
+        Transform tf = null;
+        if (go != null)
+        {
+             tf = go.transform;
+
+        }
+
+        if (tf)
+        {
+            if (transform.position == tf.position)
+            {
+                go.SetActive(false);
+            }
+        }
     }
 
     public void move()
@@ -70,5 +89,14 @@ public class MovementController : MonoBehaviour {
         float inputY = Input.GetAxis("Vertical");
         movementInput.x = inputX;
         movementInput.y = inputY;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print(collision.gameObject.name);
+        if(collision.gameObject.tag == "pill")
+        {
+            collision.gameObject.SetActive(false);
+        }
     }
 }
