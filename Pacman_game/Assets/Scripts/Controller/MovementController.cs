@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour {
 
+    /// <summary>
+    /// The variable that stores the user input
+    /// </summary>
     private Vector2 movementInput;
 
+    /// <summary>
+    /// The direction of pacman
+    /// </summary>
     private Vector3 direction;
 
-
-    bool hasMoved;
+    /// <summary>
+    /// The boolean that indicates pacman has moved or not
+    /// </summary>
+    private bool hasMoved;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +39,9 @@ public class MovementController : MonoBehaviour {
         
 	}
 
-
+    /// <summary>
+    /// The function that defines the action for the movement of the user input
+    /// </summary>
     public void GetMovementDirection()
     {
         if(movementInput.x < 0)
@@ -83,6 +93,10 @@ public class MovementController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// The function used to fetch the user movement input
+    /// Stores the input to the movementInput variable
+    /// </summary>
     public void move()
     {
         float inputX = Input.GetAxis("Horizontal");
@@ -91,6 +105,10 @@ public class MovementController : MonoBehaviour {
         movementInput.y = inputY;
     }
 
+    /// <summary>
+    /// The function that detects the collision of the object that the script attached to
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print(collision.gameObject.name);
