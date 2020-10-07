@@ -74,7 +74,7 @@ public class MovementController : MonoBehaviour {
             }
             transform.position += direction;
         }
-        Vector2 pos = transform.position;
+        Vector3 pos = transform.position;
         pos.x += 0.05f;
         GameObject go = GameObject.Find(pos + "");
         Transform tf = null;
