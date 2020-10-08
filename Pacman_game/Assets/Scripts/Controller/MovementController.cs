@@ -19,9 +19,14 @@ public class MovementController : MonoBehaviour {
     /// </summary>
     private bool hasMoved;
 
+    /// <summary>
+    /// The animator component of the current object
+    /// </summary>
+    Animator animator;
+
 	// Use this for initialization
 	void Start () {
-		
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +41,7 @@ public class MovementController : MonoBehaviour {
             GetMovementDirection();
         }
 
+
         
 	}
 
@@ -49,6 +55,7 @@ public class MovementController : MonoBehaviour {
             if(movementInput.y > 0)
             {
                 direction = new Vector3(-0.9f, 1.565f);
+                
             }else if(movementInput.y < 0)
             {
                 direction = new Vector3(-0.9f, -1.565f);
@@ -74,6 +81,7 @@ public class MovementController : MonoBehaviour {
             }
             transform.position += direction;
         }
+        transform.up = direction;
         Vector3 pos = transform.position;
         pos.x += 0.05f;
         GameObject go = GameObject.Find(pos + "");
@@ -91,6 +99,7 @@ public class MovementController : MonoBehaviour {
                 go.SetActive(false);
             }
         }
+        animator.SetBool("moving", (direction.x != 0 || direction.y != 0));
     }
 
     /// <summary>

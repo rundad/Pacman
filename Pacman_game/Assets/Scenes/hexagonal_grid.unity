@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexTile: {fileID: 1279018961795544, guid: 3cfe29c6824da86479d65c5fc9773457, type: 2}
   pill: {fileID: 1267100431747988, guid: f5f0cd29b35f5674e9cd68a6f07e31ca, type: 2}
+  animator: {fileID: 9100000, guid: 322683a146b8c9f4881f1ddeaf124668, type: 2}
   pacman: {fileID: 1278926087032100, guid: 0ad8ec6d5b82e8a4b89fd35af64ab6ee, type: 2}
 --- !u!4 &240214299
 Transform:

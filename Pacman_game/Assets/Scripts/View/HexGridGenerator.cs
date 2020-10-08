@@ -41,6 +41,10 @@ public class HexGridGenerator : MonoBehaviour {
     /// </summary>
     private static HexGridManager instance;
 
+    /// <summary>
+    /// The animator controller object for pacman
+    /// </summary>
+    public RuntimeAnimatorController animator;
 
     public GameObject pacman;
 
@@ -51,8 +55,7 @@ public class HexGridGenerator : MonoBehaviour {
         mapHeight = instance.getHeight();
 
         createHexTileMap();
-
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -89,6 +92,8 @@ public class HexGridGenerator : MonoBehaviour {
                         pacman_spawned = true;
                         pacmanGO.AddComponent<CircleCollider2D>();
                         pacmanGO.AddComponent<MovementController>();
+                        pacmanGO.AddComponent<Animator>();
+                        pacmanGO.GetComponent<Animator>().runtimeAnimatorController = animator as RuntimeAnimatorController;
                     }
                     
                 }
