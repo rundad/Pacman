@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GraphManager : MonoBehaviour {
 
@@ -20,7 +21,6 @@ public class GraphManager : MonoBehaviour {
     /// </summary>
     public void startGraph()
     {
-        //TODO
-        //Load the scene of the arbitrary graph maze
+        SceneManager.LoadScene(2);
     }
 }

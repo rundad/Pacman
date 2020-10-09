@@ -1694,8 +1694,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 799613900}
-        m_MethodName: onStartButton
+      - m_Target: {fileID: 330282474}
+        m_MethodName: startGraph
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
